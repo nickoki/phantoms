@@ -18,7 +18,7 @@
       <tr>
         <td><%= song.title %></td>
         <td><%= song.artist %></td>
-        <td><%= song.debut_date %></td>
+        <td><%= song.debut_date.strftime("%b %Y") %></td>
         <td><%= song.is_active %></td>
         <td><%= link_to 'Show', song %></td>
         <td><%= link_to 'Edit', edit_song_path(song) %></td>

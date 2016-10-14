@@ -18,7 +18,7 @@
     <%= f.text_field :artist %>
 
     <%= f.label :debut_date %>
-    <%= f.date_field :debut_date %>
+    <%= f.date_select :debut_date, {:order => [:month, :year], :start_year => Date.today.year, :end_year => 1988} %>
 
     <%= f.label :is_active, "Active Repertoire", value: true %>
     <%= f.radio_button :is_active, true, :checked => true %>
