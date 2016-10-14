@@ -8,7 +8,25 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="hg">
+    <header>
+      <div class="logo">Phantoms</div>
+      <div class="header-right">
+        <%= link_to "Home", "/" %>
+        <%= link_to "Sign In", new_user_session_path %>
+      </div>
+    </header>
+
+    <div class="hg-body">
+      <main class="hg-content">
+        <%= yield %>
+      </main>
+      <nav class="hg-nav"></nav>
+      <aside class="hg-ads"></aside>
+    </div>
+
+    <footer>
+
+    </footer>
   </body>
 </html>

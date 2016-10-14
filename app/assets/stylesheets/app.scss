@@ -1,0 +1,53 @@
+/**
+ * Custom Variables
+ */
+$dark-purple: #6441A5;
+$light-purple: #9D50BB;
+$gradient-purple: linear-gradient(to left, #9D50BB , #6441A5);
+
+body {
+  // color: $purple !important;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+  height: 70px;
+  background: #bbb;
+}
+
+header a {
+  margin: 0 2em;
+}
+
+/**
+ * Holy Grail
+ */
+.hg,
+.hg-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.hg-nav {
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .hg-body {
+      flex-direction: row;
+      flex: 1;
+  }
+
+  .hg-content {
+      flex: 1;
+  }
+
+  .hg-ads,
+  .hg-nav {
+    /* 12em is the width of the columns */
+    flex: 0 0 12em;
+  }
+}
