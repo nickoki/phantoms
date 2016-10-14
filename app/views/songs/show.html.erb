@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @song.title %></h1>
+<h2><%= @song.artist %></h2>
+<h3><%= @song.debut_date.strftime("%b %Y") %></h3>
+<h4>
+  <% if @song.is_active %>
+    Active
+  <% else %>
+    Retired
+  <% end %>
+</h4>
+
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
