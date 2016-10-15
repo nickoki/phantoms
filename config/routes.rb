@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get 'add_solo'
       # post 'edit_solo'
       # put 'update_solo'
-      # delete 'remove_solo'
+      get 'remove_solo'
     end
   end
 

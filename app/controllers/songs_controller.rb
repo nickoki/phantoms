@@ -67,11 +67,24 @@ class SongsController < ApplicationController
   # Solos
   def add_solo
     @song = Song.find params[:id]
-    @song.solos.create!( user: current_user)
+    if @song.solos.length > 0
+      @song.solos.each do |solo|
+        if solo.user != current_user
+          @song.solos.create!( user: current_user)
+        end
+      end
+    else
+      @song.solos.create!( user: current_user)
+    end
 
     redirect_to :back
   end
 
+  def remove_solo
+    Solo.where(user: current_user).destroy_all
+
+    redirect_to :back
+  end
 
 
   private

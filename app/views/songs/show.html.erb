@@ -11,6 +11,11 @@
   <% end %>
 </h4>
 
+<h1>Soloists</h1>
+<% @song.solos.each do |solo| %>
+  <h4><%= solo.user.email %> <%= link_to "Remove solo", remove_solo_song_path(@song) %></h4>
+<% end %>
+
 <%= link_to 'Add Solo', add_solo_song_path(@song) %> |
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
