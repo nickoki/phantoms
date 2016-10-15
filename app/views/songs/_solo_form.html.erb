@@ -12,18 +12,9 @@
   <% end %>
 
   <div class="options">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-
-    <%= f.label :artist %>
-    <%= f.text_field :artist %>
-
-    <%= f.label :debut_date %>
-    <%= f.date_select :debut_date, {:order => [:month, :year], :start_year => Date.today.year, :end_year => 1988} %>
-
-    <%= f.label :is_active, "Active Repertoire", value: true %>
+    <%= f.label :is_active, "Active Soloist", value: true %>
     <%= f.radio_button :is_active, true, :checked => true %>
-    <%= f.label :is_active, "Retired", value: false %>
+    <%= f.label :is_active, "Past Soloist", value: false %>
     <%= f.radio_button :is_active, false %>
   </div>
 

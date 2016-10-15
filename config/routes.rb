@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     member do
       # resources :solos
       get 'add_solo'
-      # post 'edit_solo'
+      get 'edit_solo'
       # put 'update_solo'
       get 'remove_solo'
     end

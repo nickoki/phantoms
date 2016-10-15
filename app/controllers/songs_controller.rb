@@ -1,6 +1,6 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:add_solo, :remove_solo]
+  before_action :authenticate_user!, only: [:add_solo, :remove_solo, :edit_solo]
 
   # GET /songs
   # GET /songs.json
@@ -69,15 +69,33 @@ class SongsController < ApplicationController
     @song = Song.find params[:id]
     if @song.solos.length > 0
       @song.solos.each do |solo|
-        if solo.user != current_user
-          @song.solos.create!( user: current_user)
+        if solo.user.id == current_user.id
+          break
         end
+        @song.solos.create!(user: current_user)
       end
     else
-      @song.solos.create!( user: current_user)
+      @song.solos.create!(user: current_user)
     end
 
     redirect_to :back
+  end
+
+  def edit_solo
+    @song = Song.find params[:id]
+    # @solo = Solo.where(user: current_user)
+  end
+
+  def update_solo
+    respond_to do |format|
+      if @song.solos.update(user: current_user)
+        format.html { redirect_to @song, notice: 'Song was successfully updated.' }
+        format.json { render :show, status: :ok, location: @song }
+      else
+        format.html { render :edit }
+        format.json { render json: @song.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def remove_solo
