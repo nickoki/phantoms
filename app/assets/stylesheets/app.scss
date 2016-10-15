@@ -1,12 +1,33 @@
 /**
  * Custom Variables
  */
-$dark-purple: #6441A5;
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,700';
+$font: 'Roboto', sans-serif;
+
+$purple: #6441A5;
 $light-purple: #9D50BB;
 $gradient-purple: linear-gradient(to left, #9D50BB , #6441A5);
 
 body {
   // color: $purple !important;
+  font-family: $font;
+  font-size: 10pt;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: $light-purple;
+  }
+}
+
+.super-nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.2em 1em;
 }
 
 header {
@@ -16,11 +37,50 @@ header {
   padding: 2em;
   height: 70px;
   background: #bbb;
+
+  a {
+    margin: 0 2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
 }
 
-header a {
-  margin: 0 2em;
+aside {
+  display: flex;
+  flex-direction: column;
+
+    a {
+    margin: 0.5em;
+    border-radius: 1em;
+    padding: 1em;
+    background: $light-purple;
+    text-align: center;
+    color: #fff;
+  }
 }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6em;
+  padding: 2em;
+  background: #444;
+
+  h3 {
+    margin: 0;
+    color: #fff;
+  }
+}
+
+.col-3 {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  width: 33%;
+}
+
+
 
 /**
  * Holy Grail
