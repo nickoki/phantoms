@@ -1,5 +1,6 @@
 class SongsController < ApplicationController
   before_action :set_song, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:add_solo]#, :remove_solo]
 
   # GET /songs
   # GET /songs.json
@@ -60,6 +61,18 @@ class SongsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+  # Solos
+  def add_solo
+    @song = Song.find params[:id]
+    @song.solos.create!( user: current_user)
+
+    redirect_to :back
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

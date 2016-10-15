@@ -1,6 +1,6 @@
 class Song < ApplicationRecord
 
-  has_many :users
-  has_many :songs, through: :solos
+  has_many :solos
+  has_many :users, through: :solos
 
 end
