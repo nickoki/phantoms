@@ -11,6 +11,14 @@ class SongsController < ApplicationController
   # GET /songs/1
   # GET /songs/1.json
   def show
+    @song = Song.find params[:id]
+    @user_has_solo = false
+    @song.solos.each do |solo|
+      if solo.user == current_user
+        @user_has_solo = true
+        break
+      end
+    end
   end
 
   # GET /songs/new
@@ -66,6 +74,7 @@ class SongsController < ApplicationController
 
   # Solos
   def add_solo
+    @solo = Solo.new
     @song = Song.find params[:id]
     if @song.solos.length > 0
       @song.solos.each do |solo|
@@ -83,13 +92,13 @@ class SongsController < ApplicationController
 
   def edit_solo
     @song = Song.find params[:id]
-    # @solo = Solo.where(user: current_user)
+    @solo = @song.solos.where(user: current_user)[0]
   end
 
   def update_solo
     respond_to do |format|
       if @song.solos.update(user: current_user)
-        format.html { redirect_to @song, notice: 'Song was successfully updated.' }
+        format.html { redirect_to @song, notice: 'Solo was successfully updated.' }
         format.json { render :show, status: :ok, location: @song }
       else
         format.html { render :edit }

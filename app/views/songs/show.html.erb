@@ -1,7 +1,8 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Edit', edit_song_path(@song) %> |
+<%= link_to 'Back', songs_path %>
 
 <h1><%= @song.title %></h1>
-<h2><%= @song.artist %></h2>
+<h3><%= @song.artist %></h3>
 <h3><%= @song.debut_date.strftime("%b %Y") %></h3>
 <h4>
   <% if @song.is_active %>
@@ -12,14 +13,28 @@
 </h4>
 
 <h1>Soloists</h1>
+<h2>Active</h2>
 <% @song.solos.each do |solo| %>
-  <div><%= solo.user.email %>
-    <% if solo.user == current_user %>
-      <%= link_to "Remove solo", remove_solo_song_path(@song) %>
-    <% end %>
-  </div>
+  <% if solo.is_active %>
+    <div><%= solo.user.email %><%= solo.is_active %>
+      <% if solo.user == current_user %>
+        <%= link_to "Remove solo", remove_solo_song_path(@song) %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
 
-<%= link_to 'Add Solo', add_solo_song_path(@song) %> |
-<%= link_to 'Edit', edit_song_path(@song) %> |
-<%= link_to 'Back', songs_path %>
+<h2>Past</h2>
+<% @song.solos.each do |solo| %>
+  <% if !solo.is_active %>
+    <div><%= solo.user.email %><%= solo.is_active %>
+      <% if solo.user == current_user %>
+        <%= link_to "Remove solo", remove_solo_song_path(@song) %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if !@user_has_solo %>
+  <%= link_to 'Add Solo', add_solo_song_path(@song) %> |
+<% end %>
