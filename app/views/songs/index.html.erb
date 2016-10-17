@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Songs</h1>
 
 <table>
@@ -9,7 +7,9 @@
       <th>Artist</th>
       <th>Debut Date</th>
       <th>Active Rep?</th>
-      <th colspan="3">Options</th>
+      <% if current_user %>
+        <th colspan="3">Options</th>
+      <% end %>
     </tr>
   </thead>
 
@@ -20,9 +20,11 @@
         <td><%= song.artist %></td>
         <td><%= song.debut_date.strftime("%b %Y") %></td>
         <td><%= song.is_active %></td>
-        <td><%= link_to 'Show', song %></td>
-        <td><%= link_to 'Edit', edit_song_path(song) %></td>
-        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user %>
+          <td><%= link_to 'Show', song %></td>
+          <td><%= link_to 'Edit', edit_song_path(song) %></td>
+          <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,6 @@
 
 <br>
 
-<%= link_to 'New Song', new_song_path %>
+<% if current_user %>
+  <%= link_to 'New Song', new_song_path %>
+<% end %>
