@@ -4,6 +4,7 @@
   <div>
     <%= image_tag phantom.image_url, width: '240px' %>
     <h2><%= phantom.first_name %></h2>
+    <h2><%= phantom.user_id %></h2>
     <span><%= link_to 'Show', phantom %></span>
     <span><%= link_to 'Edit', edit_phantom_path(phantom) %></span>
     <span><%= link_to 'Destroy', phantom, method: :delete, data: { confirm: 'Are you sure?' } %></span>

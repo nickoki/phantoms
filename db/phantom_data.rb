@@ -1,7 +1,7 @@
 def get_phantom_data
 
-  phantom_data =[
-    {
+  phantom_data = {
+    "nickoki" => {
       first_name: "Nick",
       last_name:  "Oki",
       voice_part: "Baritone",
@@ -10,7 +10,8 @@ def get_phantom_data
       join_date:  Date.today,
       end_date:   Date.today,
       is_active:  false
-    },{
+    },
+    "taylorperz" => {
       first_name: "Taylor",
       last_name:  "Perz",
       voice_part: "Alto",
@@ -20,5 +21,5 @@ def get_phantom_data
       end_date:   Date.today,
       is_active:  false
     }
-  ]
+  }
 end
