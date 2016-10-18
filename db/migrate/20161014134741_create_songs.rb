@@ -6,7 +6,7 @@ class CreateSongs < ActiveRecord::Migration[5.0]
       t.datetime :debut_date
       t.boolean :is_active
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
