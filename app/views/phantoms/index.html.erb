@@ -2,7 +2,7 @@
 
 <% @phantoms.each do |phantom| %>
   <div>
-    <%= image_tag phantom.image_url %>
+    <%= image_tag phantom.image_url, width: '240px' %>
     <h2><%= phantom.first_name %></h2>
     <span><%= link_to 'Show', phantom %></span>
     <span><%= link_to 'Edit', edit_phantom_path(phantom) %></span>
