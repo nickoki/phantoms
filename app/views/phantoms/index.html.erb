@@ -1,0 +1,15 @@
+<h1>The Phantoms</h1>
+
+<% @phantoms.each do |phantom| %>
+  <div>
+    <%= image_tag phantom.image_url %>
+    <h2><%= phantom.first_name %></h2>
+    <span><%= link_to 'Show', phantom %></span>
+    <span><%= link_to 'Edit', edit_phantom_path(phantom) %></span>
+    <span><%= link_to 'Destroy', phantom, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    <% end %>
+  </div>
+
+<br>
+
+<%= link_to 'New Phantom', new_phantom_path %>

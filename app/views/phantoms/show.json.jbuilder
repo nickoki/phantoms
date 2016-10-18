@@ -1,0 +1,1 @@
+json.partial! "phantoms/phantom", phantom: @phantom

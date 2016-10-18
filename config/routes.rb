@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :phantoms
+
   resources :songs do
     # add routes to add and remove solo
     member do

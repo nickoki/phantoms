@@ -10,13 +10,16 @@
 
   <body class="hg">
     <div class="super-nav">
+      <span></span>
       <span id="notice"><%= notice %></span>
-      <% if current_user %>
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-        <%= current_user.email %>
-      <% else %>
-        <%= link_to "Phantoms Log In", new_user_session_path %>
-      <% end %>
+      <span>
+        <% if current_user %>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+          <%= current_user.email %>
+        <% else %>
+          <%= link_to "Phantoms Log In", new_user_session_path %>
+        <% end %>
+      </span>
     </div>
     <header>
       <div class="logo">Phantoms</div>
@@ -24,7 +27,7 @@
         <%= link_to "Home", "/" %>
         <%= link_to "News", "#" %>
         <%= link_to "Repertoire", songs_path %>
-        <%= link_to "Members", "#" %>
+        <%= link_to "Members", phantoms_path %>
         <%= link_to "About Us", "#" %>
         <%= link_to "Contact", "#" %>
       </div>

@@ -1,0 +1,12 @@
+<%= link_to 'Edit', edit_phantom_path(@phantom) %> |
+<%= link_to 'Back', phantoms_path %>
+
+
+<h1><%= @phantom.first_name %> <%= @phantom.last_name %></h1>
+<h2><%= @phantom.voice_part %></h2>
+<%= image_tag @phantom.image_url %>
+<h3>Phantoms Class of <%= @phantom.end_date.year %></h3>
+
+<% if !@phantom.is_active %>
+  <h3>Alum</h3>
+<% end %>
