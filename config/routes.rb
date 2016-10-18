@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: "songs#index"
 
   devise_for :users
+  get '/phantoms/new' => "phantoms#new", as: :authenticated_root
 
   resources :phantoms
 

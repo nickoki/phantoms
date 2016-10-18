@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :solos
   has_many :songs, through: :solos
 
+  has_one :phantom
+
 end

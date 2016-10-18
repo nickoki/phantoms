@@ -35,6 +35,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /users/1
