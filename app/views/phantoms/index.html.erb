@@ -1,17 +1,21 @@
 <h1>The Phantoms</h1>
 
-<% @phantoms.each do |phantom| %>
-  <div>
-    <%= image_tag phantom.image_url, width: '240px' %>
-    <h2><%= phantom.first_name %></h2>
-    <h2><%= phantom.user_id %></h2>
-    <span><%= link_to 'Show', phantom %></span>
-    <span><%= link_to 'Edit', edit_phantom_path(phantom) %></span>
-    <span><%= link_to 'Destroy', phantom, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-  </div>
-<% end %>
+  <div class="card-container">
+  <% @phantoms.each do |phantom| %>
+    <div class="card">
+      <%= image_tag phantom.image_url, width: '240px' %>
+      <h2><%= phantom.first_name %><small><%= phantom.user_id %></small></h2>
+      <% if current_user %>
+        <% if phantom.user_id == current_user.id %>
+          <span><%= link_to 'Show', phantom %></span>
+          <span><%= link_to 'Edit', edit_phantom_path(phantom) %></span>
+          <span><%= link_to 'Destroy', phantom, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <br>
-
 
 <%= link_to 'New Phantom', new_phantom_path %>

@@ -20,11 +20,8 @@ phantom_data = get_phantom_data()
 song_data = get_song_data()
 
 user_data.each_pair do |user_name, user_info|
-
   new_user = User.create! user_info
-
   new_phantom = phantom_data[user_name]
-  binding.pry
   Phantom.create!(new_phantom.merge(user: new_user))
 end
 
