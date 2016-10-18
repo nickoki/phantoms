@@ -96,15 +96,21 @@ class SongsController < ApplicationController
   end
 
   def update_solo
-    respond_to do |format|
-      if @song.solos.update(user: current_user)
-        format.html { redirect_to @song, notice: 'Solo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @song }
-      else
-        format.html { render :edit }
-        format.json { render json: @song.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @song.solos.update(user: current_user)
+    #     format.html { redirect_to @song, notice: 'Solo was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @song }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @song.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    @song = Song.find params[:id]
+    @solo = @song.solos.where(user: current_user)[0]
+    # binding.pry
+    @solo.update(is_active: params[:solo][:is_active])
+
+    redirect_to @song
   end
 
   def remove_solo
@@ -124,4 +130,5 @@ class SongsController < ApplicationController
     def song_params
       params.require(:song).permit(:title, :artist, :debut_date, :is_active)
     end
+
 end

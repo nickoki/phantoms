@@ -18,7 +18,7 @@
   <% if solo.is_active %>
     <div><%= solo.user.email %><%= solo.is_active %>
       <% if solo.user == current_user %>
-        <%= link_to "Remove solo", remove_solo_song_path(@song) %>
+        <%= link_to "Remove solo", remove_solo_song_path(@song), method: :delete %>
       <% end %>
     </div>
   <% end %>
@@ -29,12 +29,14 @@
   <% if !solo.is_active %>
     <div><%= solo.user.email %><%= solo.is_active %>
       <% if solo.user == current_user %>
-        <%= link_to "Remove solo", remove_solo_song_path(@song) %>
+
+
+        <%= link_to "Remove solo", remove_solo_song_path(@song), method: :delete %>
       <% end %>
     </div>
   <% end %>
 <% end %>
 
 <% if !@user_has_solo %>
-  <%= link_to 'Add Solo', add_solo_song_path(@song) %> |
+  <%= link_to 'Add Solo', add_solo_song_path(@song), method: :post %> |
 <% end %>

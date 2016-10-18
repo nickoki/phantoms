@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     # add routes to add and remove solo
     member do
       # resources :solos
-      get 'add_solo' # TODO why are these GET requests?
+      post 'add_solo' # TODO why are these GET requests?
       get 'edit_solo'
-      # put 'update_solo'
-      get 'remove_solo'
+      put 'update_solo'
+      delete 'remove_solo'
     end
   end
 
