@@ -39,7 +39,7 @@
     </div>
     <div class="field">
       <%= f.label :end_date %>
-      <%= f.date_select :end_date, {:order => [:month, :year], :start_year => Date.today.year, :end_year => 1988} %>
+      <%= f.date_select :end_date, {:order => [:month, :year], :start_year => (Date.today.year + 6), :end_year => 1988} %>
     </div>
     <div class="field radio">
       <%= f.label :is_active, "Active", value: true %>
