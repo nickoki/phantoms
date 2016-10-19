@@ -13,9 +13,9 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :is_active, "Active Soloist", value: true %>
+      <%= f.label :is_active, "Active Soloist", value: true, :class => 'light' %>
       <%= f.radio_button :is_active, true %>
-      <%= f.label :is_active, "Past Soloist", value: false %>
+      <%= f.label :is_active, "Past Soloist", value: false, :class => 'light' %>
       <%= f.radio_button :is_active, false %>
     </div>
 

@@ -20,13 +20,17 @@ body {
     box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.4);
     padding-bottom: 4em;
 
+    .hg-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 20px;
+      text-align: center;
+    }
+
     img {
       border-radius: 2px;
     }
-  }
-
-  .hg-content {
-    padding-top: 20px;
   }
 }
 
@@ -144,12 +148,17 @@ aside {
 footer {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 6em;
+  padding: 2em 0 6em;
   background: #444;
 
   h3 {
     margin: 0;
     color: #fff;
+  }
+
+  a {
+    display: block;
+    color: #ddd;
   }
 
   nav,
@@ -232,7 +241,7 @@ table {
 }
 
 .inactive {
-  
+
   img {
     opacity: 0.8;
     filter: grayscale(1);
@@ -245,64 +254,146 @@ table {
 /**
  * FORMS
  */
-.form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #ddd;
-  width: 300px;
+// .form {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border: 1px solid #ddd;
+//   width: 100%;
+//
+//   .field,
+//   .actions {
+//     display: flex;
+//     justify-content: flex-end;
+//     align-items: center;
+//     margin: 1em;
+//     width: 100% !important;
+//   }
+// }
+//
+// label {
+//
+// }
+//
+// input:not([type="checkbox"]),
+// textarea {
+//   display: inline-block;
+//   margin-left: 1em;
+//   padding: 1em;
+//
+//   background: transparent;
+//   outline: none;
+//   border: 1px solid $light-purple;
+//
+//   transition: all 0.3s ease-in-out;
+//   -webkit-transition: all 0.3s ease-in-out;
+//   -moz-transition: all 0.3s ease-in-out;
+//   -ms-transition: all 0.3s ease-in-out;
+// }
+//
+// input[type="checkbox"] {
+//   margin-right: 1em;
+// }
+//
+// textarea {
+//   background: transparent;
+//   outline: none;
+//
+//   border: 1px solid  $light-purple;
+//
+//   transition: all 0.3s ease-in-out;
+//   -webkit-transition: all 0.3s ease-in-out;
+//   -moz-transition: all 0.3s ease-in-out;
+//   -ms-transition: all 0.3s ease-in-out;
+// }
+//
+// input[type="submit"] {
+//   box-sizing: content-box;
+//   outline: none;
+//   cursor: pointer;
+//
+//   border: 1px solid $light-purple;
+//   color: $light-purple;
+// }
 
-  .field,
-  .actions {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 1em;
+
+.form {
+  box-sizing: border-box;
+  margin: 10px auto;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 1.6em;
+  width: 380px;
+  text-align: left;
+
+  .field {
+    margin-bottom: 2.4em;
   }
 }
 
-label {
-
-}
-
-input:not([type="checkbox"]),
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
 textarea {
-  display: inline-block;
-  margin-left: 1em;
-  padding: 1em;
-
-  background: transparent;
-  outline: none;
-  border: 1px solid $purple;
-
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+  border: 1px solid $light-purple;
+  border-radius: 2px;
+  padding: 1.6em;
+  width: 100%;
+  background: none;
+  font-size: 1em;
+  color: $light-purple;
 }
 
+select {
+  box-sizing: border-box;
+  border: 1px solid $light-purple;
+  border-radius: 2px;
+  padding: 1.6em;
+  background: none;
+  font-size: 1em;
+  color: $light-purple;
+}
+
+input[type="radio"],
 input[type="checkbox"] {
-  margin-right: 1em;
+  margin: 0 2em 4px 0;
 }
 
-textarea {
-  background: transparent;
-  outline: none;
-
-  border: 1px solid  $purple;
-
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
+select {
+  padding: 6px;
+  height: 32px;
+  border-radius: 2px;
 }
 
 input[type="submit"] {
-  box-sizing: content-box;
-  outline: none;
+  border: 1px solid $light-purple;
+  border-radius: 2px;
+  padding: 1em;
+  width: 100%;
+  background: none;
+  color: $light-purple;
+  font-size: 1.2em;
   cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
 
-  border: 1px solid $purple;
+label {
+  display: block;
+  margin-bottom: 0.4em;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
 }
 
 

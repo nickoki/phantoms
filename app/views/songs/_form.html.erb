@@ -25,9 +25,9 @@
       <%= f.date_select :debut_date, {:order => [:month, :year], :start_year => Date.today.year, :end_year => 1988} %>
     </div>
     <div class="field radio">
-      <%= f.label :is_active, "Active Repertoire", value: true %>
+      <%= f.label :is_active, "Active Repertoire", value: true, :class => 'light' %>
       <%= f.radio_button :is_active, true, :checked => true %>
-      <%= f.label :is_active, "Retired", value: false %>
+      <%= f.label :is_active, "Retired", value: false, :class => 'light' %>
       <%= f.radio_button :is_active, false %>
     </div>
 
