@@ -19,6 +19,14 @@ class SongsController < ApplicationController
         break
       end
     end
+
+    @user_has_arrangements = false
+    @song.arrangements.each do |arrangement|
+      if arrangement.user == current_user
+        @user_has_arrangement = true
+        break
+      end
+    end
   end
 
   # GET /songs/new

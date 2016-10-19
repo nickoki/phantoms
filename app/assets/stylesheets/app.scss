@@ -16,6 +16,11 @@ body {
   font-size: 10pt;
   color: #373533 !important;
 
+  .hg-body {
+    box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.4);
+    padding-bottom: 4em;
+  }
+
   .hg-content {
     padding-top: 20px;
   }
@@ -109,9 +114,10 @@ nav,
 aside {
   display: flex;
   flex-direction: column;
+  text-align: center;
 
   a {
-    margin: 0.5em;
+    margin: 1em 1em 0;
     border: 1px solid $light-purple;
     border-radius: 2px;
     padding: 1em;
@@ -121,12 +127,19 @@ aside {
       border: 1px solid $purple;
     }
   }
+
+  span {
+    margin: 2em 1em 0;
+
+    em {
+      color: #777;
+    }
+  }
 }
 
 footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 6em;
   padding-bottom: 6em;
   background: #444;
 

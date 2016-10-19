@@ -5,9 +5,6 @@
   </div>
 <% end %>
 
-<%= link_to 'Edit', edit_song_path(@song) %> |
-<%= link_to 'Back', songs_path %>
-
 <h1><%= @song.title %></h1>
 <h3><%= @song.artist %></h3>
 <h3><%= @song.debut_date.strftime("%b %Y") %></h3>
@@ -39,15 +36,27 @@
     </div>
 <% end %>
 
-<% if current_user %>
-  <hr />
-  <% if !@user_has_solo %>
-    <p>Did you solo <%= @song.title %>? <%= link_to 'Add to my solos', add_solo_song_path(@song), method: :post %></p>
-  <% elsif @user_has_solo%>
-    <p><%= link_to "Edit solo", edit_solo_song_path(@song) %> | <%= link_to "Remove solo", remove_solo_song_path(@song), method: :delete %></p>
-  <% end %>
+<% content_for :nav do %>
+  <%= link_to 'Back', songs_path %>
+<% end %>
 
-  <% if !@user_has_arrangement %>
-    <p>Did you arrange <%= @song.title %>? <%= link_to 'Add to my arrangements', add_arrangement_song_path(@song), method: :post %></p>
+<% content_for :aside do %>
+  <% if current_user %>
+    <%= link_to 'Edit Song Info', edit_song_path(@song) %>
+    <%= link_to 'Delete Song', edit_song_path(@song) %>
+    <% if !@user_has_solo %>
+      <span><em>Did you solo <%= @song.title %>?</em></span>
+      <%= link_to 'Add Solo', add_solo_song_path(@song), method: :post %>
+    <% elsif @user_has_solo%>
+      <%= link_to "Edit Solo", edit_solo_song_path(@song) %>
+      <%= link_to "Remove Solo", remove_solo_song_path(@song), method: :delete %>
+    <% end %>
+
+    <% if !@user_has_arrangement %>
+      <span><em>Did you arrange <%= @song.title %>?</em></span>
+      <%= link_to 'Add Arrangement', add_arrangement_song_path(@song), method: :post %>
+    <% elsif @user_has_solo%>
+      <%= link_to "Remove Arrangement", remove_arrangement_song_path(@song), method: :delete %>
+    <% end %>
   <% end %>
 <% end %>

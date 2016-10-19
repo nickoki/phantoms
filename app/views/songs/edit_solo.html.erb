@@ -10,3 +10,7 @@
 <%= @solo.user.email %>
 
 <%= render 'solo_form', solo: @solo %>
+
+<% content_for :nav do %>
+  <%= link_to 'Back', song_path(@song) %>
+<% end %>

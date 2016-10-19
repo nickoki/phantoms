@@ -37,8 +37,8 @@
   </tbody>
 </table>
 
-<br>
-
-<% if current_user %>
-  <%= link_to 'New Song', new_song_path %>
+<% content_for :aside do %>
+  <% if current_user %>
+    <%= link_to 'New Song', new_song_path %>
+  <% end %>
 <% end %>

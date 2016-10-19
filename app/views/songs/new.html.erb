@@ -9,4 +9,6 @@
 
 <%= render 'form', song: @song %>
 
-<%= link_to 'Back', songs_path %>
+<% content_for :nav do %>
+  <%= link_to 'Back', songs_path %>
+<% end %>
