@@ -105,17 +105,21 @@ header {
 
 
 
+nav,
 aside {
   display: flex;
   flex-direction: column;
 
-    a {
+  a {
     margin: 0.5em;
-    border-radius: 1em;
+    border: 1px solid $light-purple;
+    border-radius: 2px;
     padding: 1em;
-    background: $light-purple;
     text-align: center;
-    color: #fff;
+
+    &:hover {
+      border: 1px solid $purple;
+    }
   }
 }
 
@@ -123,12 +127,24 @@ footer {
   display: flex;
   justify-content: space-between;
   margin-top: 6em;
-  padding: 2em;
   background: #444;
 
   h3 {
     margin: 0;
     color: #fff;
+  }
+
+  nav,
+  aside {
+    a {
+      border: 1px solid #ddd;
+      color: #ddd;
+
+      &:hover {
+        border: 1px solid #fff;
+        color: #fff;
+      }
+    }
   }
 }
 
@@ -230,7 +246,9 @@ label {
 
 }
 
-input:not([type="checkbox"]) {
+input:not([type="checkbox"]),
+textarea {
+  display: inline-block;
   margin-left: 1em;
   padding: 1em;
 

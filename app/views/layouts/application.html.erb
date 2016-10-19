@@ -48,15 +48,17 @@
         <%= yield %>
       </main>
 
-      <nav class="hg-nav"></nav>
+      <nav class="hg-nav">
+        <%= yield :nav %>
+      </nav>
 
       <aside class="hg-ads">
-        <%# link_to "Auditions", "#" %>
+        <%= yield :aside %>
       </aside>
     </div>
 
     <footer>
-      <div class="col-3">
+      <main class="hg-content">
         <h3>The Georgetown Phantoms</h3>
         <%= link_to "News", "#" %>
         <%= link_to "Repertoire", songs_path %>
@@ -64,15 +66,15 @@
         <%= link_to "About Us", "#" %>
         <%= link_to "Contact", "#" %>
         <%= link_to "Auditions", "#" %>
-      </div>
+      </main>
 
-      <div class="col-3">
+      <nav class="hg-nav"></nav>
 
-      </div>
-
-      <div class="col-3">
-        <%= link_to "Sign Up", new_user_registration_path %>
-      </div>
+      <aside class="hg-ads">
+        <% if !current_user %>
+          <%= link_to "Sign Up", new_user_registration_path %>
+        <% end %>
+      </aside>
     </footer>
   </body>
 </html>

@@ -1,3 +1,45 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.blog-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  .post {
+    display: flex;
+    justify-content: center;
+    margin: 4em 0;
+
+    .image {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 50%;
+
+      img {
+        box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+        max-height: 266px;
+      }
+    }
+
+    .content {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 4em;
+      width: 50%;
+      max-height: 266px;
+
+      h2,
+      p,
+      span {
+        display: block;
+        margin: 0.4em 0;
+      }
+    }
+  }
+}
