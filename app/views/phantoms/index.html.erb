@@ -1,19 +1,19 @@
+<% content_for :backdrop do %>
+  <div class="backdrop img-phantoms">
+    <div class="overlay">
+    </div>
+  </div>
+<% end %>
+
 <h1>The Phantoms</h1>
 
-  <div class="card-container">
+<div class="card-container">
   <% @phantoms.each do |phantom| %>
     <div class="card">
       <%= image_tag phantom.image_url, width: '240px' %>
       <h2><%= phantom.first_name %></h2>
       <h3><%= phantom.voice_part %> • Class of <%= phantom.end_date.year %></h3>
       <span><%= link_to '<i class="fa fa-chevron-right"></i> View'.html_safe, phantom %></span>
-      <% if current_user %>
-        <% if phantom.user_id == current_user.id %>
-          <span><%= link_to 'Show', phantom %></span>
-          <span><%= link_to 'Edit', edit_phantom_path(phantom) %></span>
-          <span><%= link_to 'Destroy', phantom, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-        <% end %>
-      <% end %>
     </div>
   <% end %>
 </div>

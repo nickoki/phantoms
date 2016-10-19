@@ -21,8 +21,7 @@
             <%= link_to "Profile Settings", edit_phantom_path(Phantom.where(user_id: current_user.id)[0]) %>
           <% end %>
 
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-          <%= current_user.email %>
+          <%= link_to "Log Out #{current_user.email}", destroy_user_session_path, method: :delete %>
         <% else %>
           <%= link_to "Phantoms Log In", new_user_session_path %>
         <% end %>
@@ -36,18 +35,13 @@
       </div>
       <div class="header-right">
         <%= link_to "Home", "/" %>
-        <%= link_to "News", "#" %>
         <%= link_to "Repertoire", songs_path %>
         <%= link_to "Members", phantoms_path %>
         <%= link_to "About Us", "#" %>
-        <%= link_to "Contact", "#" %>
       </div>
     </header>
 
-    <div class="jumbotron">
-      <div class="overlay">
-      </div>
-    </div>
+    <%= yield :backdrop %>
 
     <div class="hg-body">
       <main class="hg-content">

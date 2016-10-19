@@ -1,12 +1,27 @@
-<%= link_to 'Edit', edit_phantom_path(@phantom) %> |
+<% content_for :backdrop do %>
+  <div class="backdrop img-phantoms">
+    <div class="overlay">
+    </div>
+  </div>
+<% end %>
+
 <%= link_to 'Back', phantoms_path %>
 
+<div class="phantom-show">
+  <h1><%= @phantom.first_name %> <%= @phantom.last_name %></h1>
+  <h2><%= @phantom.voice_part %></h2>
+  <%= image_tag @phantom.image_url, width: '300px' %>
+  <h3>Phantoms Class of <%= @phantom.end_date.year %></h3>
 
-<h1><%= @phantom.first_name %> <%= @phantom.last_name %></h1>
-<h2><%= @phantom.voice_part %></h2>
-<%= image_tag @phantom.image_url, width: '300px' %>
-<h3>Phantoms Class of <%= @phantom.end_date.year %></h3>
+  <% if !@phantom.is_active %>
+    <h3>Alum</h3>
+  <% end %>
 
-<% if !@phantom.is_active %>
-  <h3>Alum</h3>
-<% end %>
+  <% if current_user %>
+    <% if @phantom.user_id == current_user.id %>
+      <span><%= link_to 'Show', @phantom %></span>
+      <span><%= link_to 'Edit', edit_phantom_path(@phantom) %></span>
+      <span><%= link_to 'Destroy', @phantom, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+    <% end %>
+  <% end %>
+</div>

@@ -11,7 +11,7 @@ $light-purple: #9D50BB;
 $gradient-purple: linear-gradient(to left, #9D50BB , #6441A5);
 
 body {
-  // color: $purple !important;
+  margin: 0 !important;
   font-family: $font;
   font-size: 10pt;
   color: #373533 !important;
@@ -19,11 +19,11 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: $light-purple;
   transition: 0.3s ease-in-out;
 
   &:hover {
-    color: $light-purple;
+    color: $purple;
   }
 }
 
@@ -40,6 +40,10 @@ a {
 
   a {
     color: #fff;
+  }
+
+  a:not(:last-child) {
+    margin-right: 0.6em;
   }
 }
 
@@ -61,6 +65,11 @@ header {
     font-weight: 700;
     letter-spacing: 0.1em;
     color: #fff;
+
+    &:hover {
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+      color: #fff;
+    }
   }
 
   .logo {
@@ -74,16 +83,21 @@ header {
   }
 }
 
-.jumbotron {
-  height: 800px;
-  background: no-repeat center image-url('phantoms01.jpg');
-  background-size: cover;
+.img-phantoms {
+  background: image-url('phantoms01.jpg') center center no-repeat;
+}
+
+.backdrop {
+  height: 260px;
+  background-size: cover !important;
 
   .overlay {
     height: inherit;
     background: linear-gradient(to top, hsla(283.2,44%,52.4%, 0.4), hsla(261,43.5%,45.1%, 0.7));
   }
 }
+
+
 
 aside {
   display: flex;
@@ -153,7 +167,7 @@ table {
 
 
 /**
- * CARDS
+ * VIEWS
  */
 .card-container {
   display:flex;
@@ -163,6 +177,13 @@ table {
     margin: 1em;
     border: 1px solid #ddd;
     padding: 1em;
+  }
+}
+
+.phantom-show {
+
+  span:not(:last-child) {
+    margin-right: 0.6em;
   }
 }
 
