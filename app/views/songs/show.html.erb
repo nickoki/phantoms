@@ -20,32 +20,34 @@
 </h4>
 
 <h1>Soloists</h1>
-<h2>Active</h2>
+
 <% @song.solos.each do |solo| %>
   <% if solo.is_active %>
-    <div>
-      <%= solo.user.email %>
-      <% if solo.user == current_user %>
-        <%= link_to "Edit solo", edit_solo_song_path(@song) %> |
-        <%= link_to "Remove solo", remove_solo_song_path(@song), method: :delete %>
-      <% end %>
-    </div>
+    <div class="active">
+  <% else %>
+    <div class="inactive">
   <% end %>
+      <a><%= image_tag Phantom.where(user_id: solo.user.id)[0].image_url, width: '200px' %></a>
+    </div>
 <% end %>
 
-<h2>Past</h2>
-<% @song.solos.each do |solo| %>
-  <% if !solo.is_active %>
+<h1>Arranged By</h1>
+
+<% @song.arrangements.each do |arrangement| %>
     <div>
-      <%= solo.user.email %>
-      <% if solo.user == current_user %>
-        <%= link_to "Edit solo", edit_solo_song_path(@song) %> |
-        <%= link_to "Remove solo", remove_solo_song_path(@song), method: :delete %>
-      <% end %>
+      <a><%= image_tag Phantom.where(user_id: arrangement.user.id)[0].image_url, width: '200px' %></a>
     </div>
-  <% end %>
 <% end %>
 
-<% if !@user_has_solo %>
-  <%= link_to 'Add Solo', add_solo_song_path(@song), method: :post %> |
+<% if current_user %>
+  <hr />
+  <% if !@user_has_solo %>
+    <p>Did you solo <%= @song.title %>? <%= link_to 'Add to my solos', add_solo_song_path(@song), method: :post %></p>
+  <% elsif @user_has_solo%>
+    <p><%= link_to "Edit solo", edit_solo_song_path(@song) %> | <%= link_to "Remove solo", remove_solo_song_path(@song), method: :delete %></p>
+  <% end %>
+
+  <% if !@user_has_arrangement %>
+    <p>Did you arrange <%= @song.title %>? <%= link_to 'Add to my arrangements', add_arrangement_song_path(@song), method: :post %></p>
+  <% end %>
 <% end %>

@@ -122,18 +122,18 @@ class SongsController < ApplicationController
 
 
   # Arrangements
-  def add_solo
-    @solo = Solo.new
+  def add_arrangement
+    @solo = Arrangement.new
     @song = Song.find params[:id]
     if @song.arrangements.length > 0
       @song.arrangements.each do |solo|
         if solo.user.id == current_user.id
           break
         end
-        @song.arrangements.create!(user: current_user, is_active: false)
+        @song.arrangements.create!(user: current_user)
       end
     else
-      @song.arrangements.create!(user: current_user, is_active: false)
+      @song.arrangements.create!(user: current_user)
     end
 
     redirect_to :back
