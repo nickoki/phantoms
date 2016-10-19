@@ -26,30 +26,61 @@
   <% end %>
 </div>
 
-<h1><%= @phantom.first_name.possessive %> Solos</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Artist</th>
-      <% if current_user %>
-        <th colspan="3">Options</th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @solos.each do |solo| %>
-      <% song = Song.find(solo.song_id) %>
+<% if @solos.length > 0 %>
+  <h1><%= @phantom.first_name.possessive %> Solos</h1>
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to song.title, song %></td>
-        <td><%= song.artist %></td>
+        <th>Title</th>
+        <th>Artist</th>
         <% if current_user %>
-          <td><%= link_to 'Show Song', song %></td>
-          <td><%= link_to 'Edit Solo', edit_solo_song_path(song) %></td>
-          <td><%= link_to 'Delete Solo', remove_solo_song_path(song), method: :delete %></td>
+          <th colspan="3">Options</th>
         <% end %>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @solos.each do |solo| %>
+        <% song = Song.find(solo.song_id) %>
+        <tr>
+          <td><%= link_to song.title, song %></td>
+          <td><%= song.artist %></td>
+          <% if current_user %>
+            <td><%= link_to 'Show Song', song %></td>
+            <td><%= link_to 'Edit Solo', edit_solo_song_path(song) %></td>
+            <td><%= link_to 'Remove Solo', remove_solo_song_path(song), method: :delete %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if @arrangements.length > 0 %>
+  <h1><%= @phantom.first_name.possessive %> Song Arrangements</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <% if current_user %>
+          <th colspan="3">Options</th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @arrangements.each do |arrangement| %>
+        <% song = Song.find(arrangement.song_id) %>
+        <tr>
+          <td><%= link_to song.title, song %></td>
+          <td><%= song.artist %></td>
+          <% if current_user %>
+            <td><%= link_to 'Show Song', song %></td>
+            <td><%= link_to 'Remove Arrangement', remove_arrangement_song_path(song), method: :delete %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

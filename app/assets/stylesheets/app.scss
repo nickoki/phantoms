@@ -15,6 +15,10 @@ body {
   font-family: $font;
   font-size: 10pt;
   color: #373533 !important;
+
+  .hg-content {
+    padding-top: 20px;
+  }
 }
 
 a {
@@ -34,6 +38,7 @@ a {
   right: 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0.2em 1em;
   height: 30px;
   color: #fff;
@@ -42,7 +47,8 @@ a {
     color: #fff;
   }
 
-  a:not(:last-child) {
+  a:not(:last-child),
+  span {
     margin-right: 0.6em;
   }
 }
@@ -76,8 +82,8 @@ header {
     display: flex;
     align-items: center;
 
-     a {
-       margin: 0;
+    a {
+      margin: 0;
       font-size: 2em;
     }
   }

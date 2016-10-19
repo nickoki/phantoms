@@ -12,6 +12,7 @@ class PhantomsController < ApplicationController
   def show
     @phantom = Phantom.find params[:id]
     @solos = Solo.where(user: @phantom.user_id)
+    @arrangements = Arrangement.where(user: @phantom.user_id)
   end
 
   # GET /phantoms/new
@@ -28,16 +29,16 @@ class PhantomsController < ApplicationController
   def create
     @phantom = Phantom.create!(phantom_params.merge(user: current_user))
     redirect_to phantom_path(@phantom)
-    #
-    # respond_to do |format|
-    #   if @phantom.save
-    #     format.html { redirect_to @phantom, notice: 'Phantom was successfully created.' }
-    #     format.json { render :show, status: :created, location: @phantom }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @phantom.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    
+    respond_to do |format|
+      if @phantom.save
+        format.html { redirect_to @phantom, notice: 'Phantom was successfully created.' }
+        format.json { render :show, status: :created, location: @phantom }
+      else
+        format.html { render :new }
+        format.json { render json: @phantom.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /phantoms/1

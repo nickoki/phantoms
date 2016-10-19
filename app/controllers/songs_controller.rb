@@ -123,7 +123,7 @@ class SongsController < ApplicationController
 
   # Arrangements
   def add_arrangement
-    @solo = Arrangement.new
+    @arrangement = Arrangement.new
     @song = Song.find params[:id]
     if @song.arrangements.length > 0
       @song.arrangements.each do |solo|
