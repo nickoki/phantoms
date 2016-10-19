@@ -5,75 +5,68 @@
   </div>
 <% end %>
 
-<div class="phantom-show">
-  <h1><%= @phantom.first_name %> <%= @phantom.last_name %></h1>
-  <h2><%= @phantom.voice_part %></h2>
-  <%= image_tag @phantom.image_url, width: '300px' %>
-  <h3>Phantoms Class of <%= @phantom.end_date.year %></h3>
+<div class="phantoms-show container">
+  <div class="profile">
+    <h1><%= @phantom.first_name %> <%= @phantom.last_name %></h1>
+    <h2><%= @phantom.voice_part %></h2>
+    <%= image_tag @phantom.image_url, width: '300px' %>
+    <h3>Phantoms Class of <%= @phantom.end_date.year %></h3>
 
-  <% if !@phantom.is_active %>
-    <h3>Alum</h3>
-  <% end %>
+    <% if !@phantom.is_active %>
+      <h3>Alum</h3>
+    <% end %>
+  </div>
+
+  <div class="profile-tables">
+    <% if @solos.length > 0 %>
+      <div class="solos">
+        <h1><%= @phantom.first_name.possessive %> Solos</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Artist</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @solos.each do |solo| %>
+              <% song = Song.find(solo.song_id) %>
+              <tr>
+                <td><%= link_to song.title, song %></td>
+                <td><%= song.artist %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+
+    <% if @arrangements.length > 0 %>
+      <div class="arrangements">
+        <h1><%= @phantom.first_name.possessive %> Song Arrangements</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Artist</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @arrangements.each do |arrangement| %>
+              <% song = Song.find(arrangement.song_id) %>
+              <tr>
+                <td><%= link_to song.title, song %></td>
+                <td><%= song.artist %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<% if @solos.length > 0 %>
-  <h1><%= @phantom.first_name.possessive %> Solos</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Artist</th>
-        <% if current_user %>
-          <th colspan="3">Options</th>
-        <% end %>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @solos.each do |solo| %>
-        <% song = Song.find(solo.song_id) %>
-        <tr>
-          <td><%= link_to song.title, song %></td>
-          <td><%= song.artist %></td>
-          <% if current_user %>
-            <td><%= link_to 'Show Song', song %></td>
-            <td><%= link_to 'Edit Solo', edit_solo_song_path(song) %></td>
-            <td><%= link_to 'Remove Solo', remove_solo_song_path(song), method: :delete %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
-
-<% if @arrangements.length > 0 %>
-  <h1><%= @phantom.first_name.possessive %> Song Arrangements</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Artist</th>
-        <% if current_user %>
-          <th colspan="3">Options</th>
-        <% end %>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @arrangements.each do |arrangement| %>
-        <% song = Song.find(arrangement.song_id) %>
-        <tr>
-          <td><%= link_to song.title, song %></td>
-          <td><%= song.artist %></td>
-          <% if current_user %>
-            <td><%= link_to 'Show Song', song %></td>
-            <td><%= link_to 'Remove Arrangement', remove_arrangement_song_path(song), method: :delete %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
 
 <% content_for :aside do %>
   <% if current_user %>

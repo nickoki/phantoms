@@ -1,0 +1,41 @@
+// Place all the styles related to the Phantoms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.img-phantoms {
+  background: image-url('phantoms01.jpg') center center no-repeat;
+}
+
+.phantoms-show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .profile {
+
+    span:not(:last-child) {
+      margin-right: 0.6em;
+    }
+  }
+
+  .profile-tables {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .solos,
+    .arrangements {
+      margin: 0 1em 2em;
+      min-width: 360px;
+    }
+  }
+}
+
+.inactive {
+
+  img {
+    opacity: 0.8;
+    filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+  }
+}

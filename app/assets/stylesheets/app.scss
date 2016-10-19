@@ -102,10 +102,6 @@ header {
   }
 }
 
-.img-phantoms {
-  background: image-url('phantoms01.jpg') center center no-repeat;
-}
-
 .backdrop {
   height: 310px;
   background-size: cover !important;
@@ -230,22 +226,6 @@ table {
     .info {
       padding: 0 1em 1em;
     }
-  }
-}
-
-.phantom-show {
-
-  span:not(:last-child) {
-    margin-right: 0.6em;
-  }
-}
-
-.inactive {
-
-  img {
-    opacity: 0.8;
-    filter: grayscale(1);
-    -webkit-filter: grayscale(1);
   }
 }
 
