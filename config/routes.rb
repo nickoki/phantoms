@@ -3,8 +3,7 @@ Rails.application.routes.draw do
 
   root to: "songs#index"
 
-  devise_for :users
-  get '/phantoms/new' => "phantoms#new", as: :authenticated_root
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :phantoms
 
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
     # add routes to add and remove solo
     member do
       # resources :solos
-      post 'add_solo' # TODO why are these GET requests?
+      post 'add_solo'
       get 'edit_solo'
       put 'update_solo'
       delete 'remove_solo'

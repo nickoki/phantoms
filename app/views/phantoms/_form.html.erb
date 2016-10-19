@@ -1,54 +1,55 @@
-<%= form_for(phantom) do |f| %>
-  <% if phantom.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(phantom.errors.count, "error") %> prohibited this phantom from being saved:</h2>
+<div class="form">
+  <%= form_for(phantom) do |f| %>
+    <% if phantom.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(phantom.errors.count, "error") %> prohibited this phantom from being saved:</h2>
 
-      <ul>
-      <% phantom.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% phantom.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div class="form">
-    <div>
+
+    <div class="field">
       <%= f.label :first_name %>
       <%= f.text_field :first_name %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :last_name %>
       <%= f.text_field :last_name %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :voice_part %>
       <%= f.text_field :voice_part %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :image_url %>
       <%= f.text_field :image_url %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :bio %>
       <%= f.text_area :bio %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :join_date %>
       <%= f.date_select :join_date, {:order => [:month, :year], :start_year => Date.today.year, :end_year => 1988} %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :end_date %>
       <%= f.date_select :end_date, {:order => [:month, :year], :start_year => Date.today.year, :end_year => 1988} %>
     </div>
-    <div class="radio">
+    <div class="field radio">
       <%= f.label :is_active, "Active", value: true %>
       <%= f.radio_button :is_active, true, :checked => true %>
       <%= f.label :is_active, "Alum", value: false %>
       <%= f.radio_button :is_active, false %>
     </div>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
