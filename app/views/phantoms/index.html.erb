@@ -5,15 +5,17 @@
   </div>
 <% end %>
 
-<h1>The Phantoms</h1>
+<h1>Meet the Singers</h1>
 
 <div class="card-container">
   <% @phantoms.each do |phantom| %>
     <div class="card">
       <%= image_tag phantom.image_url, width: '240px' %>
-      <h2><%= phantom.first_name %></h2>
-      <h3><%= phantom.voice_part %> • Class of <%= phantom.end_date.year %></h3>
-      <span><%= link_to '<i class="fa fa-chevron-right"></i> View'.html_safe, phantom %></span>
+      <div class="info">
+        <h2><%= phantom.first_name %></h2>
+        <h3><%= phantom.voice_part %> • Class of <%= phantom.end_date.year %></h3>
+        <span><%= link_to '<i class="fa fa-chevron-right"></i> View'.html_safe, phantom %></span>
+      </div>
     </div>
   <% end %>
 </div>

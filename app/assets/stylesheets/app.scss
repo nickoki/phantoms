@@ -177,12 +177,16 @@ table {
  */
 .card-container {
   display:flex;
+  justify-content: center;
   flex-wrap: wrap;
 
   .card {
-    margin: 1em;
+    margin: 0.4em;
     border: 1px solid #ddd;
-    padding: 1em;
+
+    .info {
+      padding: 0 1em 1em;
+    }
   }
 }
 
