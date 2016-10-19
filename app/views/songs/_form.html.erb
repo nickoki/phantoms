@@ -12,19 +12,19 @@
   <% end %>
 
   <div class="form">
-    <div>
+    <div class="field">
       <%= f.label :title %>
       <%= f.text_field :title %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :artist %>
       <%= f.text_field :artist %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :debut_date %>
       <%= f.date_select :debut_date, {:order => [:month, :year], :start_year => Date.today.year, :end_year => 1988} %>
     </div>
-    <div class="radio">
+    <div class="field radio">
       <%= f.label :is_active, "Active Repertoire", value: true %>
       <%= f.radio_button :is_active, true, :checked => true %>
       <%= f.label :is_active, "Retired", value: false %>

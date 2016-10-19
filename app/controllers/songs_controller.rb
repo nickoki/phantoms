@@ -120,6 +120,55 @@ class SongsController < ApplicationController
   end
 
 
+
+  # Arrangements
+  def add_solo
+    @solo = Solo.new
+    @song = Song.find params[:id]
+    if @song.arrangements.length > 0
+      @song.arrangements.each do |solo|
+        if solo.user.id == current_user.id
+          break
+        end
+        @song.arrangements.create!(user: current_user, is_active: false)
+      end
+    else
+      @song.arrangements.create!(user: current_user, is_active: false)
+    end
+
+    redirect_to :back
+  end
+
+  def edit_arrangement
+    @song = Song.find params[:id]
+    @arrangement = @song.arrangements.where(user: current_user)[0]
+  end
+
+  def update_arrangement
+    @song = Song.find params[:id]
+    @arrangement = @song.arrangements.where(user: current_user)[0]
+    respond_to do |format|
+      if @song.arrangements.update(user: current_user)
+        format.html { redirect_to @song, notice: 'Arrangement was successfully updated.' }
+        format.json { render :show, status: :ok, location: @song }
+      else
+        format.html { render :edit }
+        format.json { render json: @song.errors, status: :unprocessable_entity }
+      end
+    end
+    @arrangement.update(is_active: params[:arrangement][:is_active])
+
+    # redirect_to song_path(@song)
+  end
+
+  def remove_arrangement
+    @song = Song.find params[:id]
+    @song.arrangements.where(user: current_user).destroy_all
+
+    redirect_to :back
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_song

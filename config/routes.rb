@@ -10,11 +10,17 @@ Rails.application.routes.draw do
   resources :songs do
     # add routes to add and remove solo
     member do
-      # resources :solos
+      # Solos routes
       post 'add_solo'
       get 'edit_solo'
       put 'update_solo'
       delete 'remove_solo'
+
+      # Arrangements Routes
+      post 'add_arrangement'
+      get 'edit_arrangement'
+      put 'update_arrangement'
+      delete 'remove_arrangement'
     end
   end
 
