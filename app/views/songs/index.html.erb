@@ -5,8 +5,7 @@
   </div>
 <% end %>
 
-<h1>Songs</h1>
-
+<h1>Active Repertoire</h1>
 <table>
   <thead>
     <tr>
@@ -14,25 +13,44 @@
       <th>Artist</th>
       <th>Debut Date</th>
       <th>Active Rep?</th>
-      <% if current_user %>
-        <th colspan="3">Options</th>
-      <% end %>
     </tr>
   </thead>
 
   <tbody>
     <% @songs.each do |song| %>
-      <tr>
-        <td><%= link_to song.title, song %></td>
-        <td><%= song.artist %></td>
-        <td><%= song.debut_date.strftime("%b %Y") %></td>
-        <td><%= song.is_active %></td>
-        <% if current_user %>
-          <td><%= link_to 'Show', song %></td>
-          <td><%= link_to 'Edit', edit_song_path(song) %></td>
-          <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+      <% if song.is_active %>
+        <tr>
+          <td><%= link_to song.title, song %></td>
+          <td><%= song.artist %></td>
+          <td><%= song.debut_date.strftime("%b %Y") %></td>
+          <td><%= song.is_active %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Repertoire History</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Debut Date</th>
+      <th>Active Rep?</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <% if !song.is_active %>
+        <tr>
+          <td><%= link_to song.title, song %></td>
+          <td><%= song.artist %></td>
+          <td><%= song.debut_date.strftime("%b %Y") %></td>
+          <td><%= song.is_active %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

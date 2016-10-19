@@ -5,36 +5,48 @@
   </div>
 <% end %>
 
-<h1><%= @song.title %></h1>
-<h3><%= @song.artist %></h3>
-<h3><%= @song.debut_date.strftime("%b %Y") %></h3>
-<h4>
-  <% if @song.is_active %>
-    Active
-  <% else %>
-    Retired
-  <% end %>
-</h4>
+<div class="songs-show container">
+  <div class="info">
+    <h1><%= @song.title %></h1>
+    <h3><%= @song.artist %></h3>
+    <h3><%= @song.debut_date.strftime("%b %Y") %></h3>
+    <h4>
+      <% if @song.is_active %>
+        Active
+      <% else %>
+        Retired
+      <% end %>
+    </h4>
+  </div>
 
-<h1>Soloists</h1>
-
-<% @song.solos.each do |solo| %>
-  <% if solo.is_active %>
-    <div class="active">
-  <% else %>
-    <div class="inactive">
-  <% end %>
-      <a><%= image_tag Phantom.where(user_id: solo.user.id)[0].image_url, width: '200px' %></a>
+  <div class="sub">
+    <div class="solos">
+      <h1>Soloists</h1>
+      <div class="columns">
+        <% @song.solos.each do |solo| %>
+          <% if solo.is_active %>
+            <div class="active">
+          <% else %>
+            <div class="inactive">
+          <% end %>
+              <a><%= image_tag Phantom.where(user_id: solo.user.id)[0].image_url, width: '200px' %></a>
+            </div>
+        <% end %>
+      </div>
     </div>
-<% end %>
 
-<h1>Arranged By</h1>
-
-<% @song.arrangements.each do |arrangement| %>
-    <div>
-      <a><%= image_tag Phantom.where(user_id: arrangement.user.id)[0].image_url, width: '200px' %></a>
+    <div class="arrangements">
+      <h1>Arranged By</h1>
+      <div class="columns">
+        <% @song.arrangements.each do |arrangement| %>
+            <div>
+              <a><%= image_tag Phantom.where(user_id: arrangement.user.id)[0].image_url, width: '200px' %></a>
+            </div>
+        <% end %>
+      </div>
     </div>
-<% end %>
+  </div>
+</div>
 
 <% content_for :nav do %>
   <%= link_to 'Back', songs_path %>
