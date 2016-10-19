@@ -81,10 +81,10 @@ class SongsController < ApplicationController
         if solo.user.id == current_user.id
           break
         end
-        @song.solos.create!(user: current_user)
+        @song.solos.create!(user: current_user, is_active: false)
       end
     else
-      @song.solos.create!(user: current_user)
+      @song.solos.create!(user: current_user, is_active: false)
     end
 
     redirect_to :back
@@ -113,7 +113,8 @@ class SongsController < ApplicationController
   end
 
   def remove_solo
-    Solo.where(user: current_user).destroy_all
+    @song = Song.find params[:id]
+    @song.solos.where(user: current_user).destroy_all
 
     redirect_to :back
   end

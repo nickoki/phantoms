@@ -11,6 +11,7 @@ class PhantomsController < ApplicationController
   # GET /phantoms/1.json
   def show
     @phantom = Phantom.find params[:id]
+    @solos = Solo.where(user: @phantom.user_id)
   end
 
   # GET /phantoms/new
