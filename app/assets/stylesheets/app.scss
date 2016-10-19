@@ -60,7 +60,7 @@ header {
   color: #fff;
 
   a {
-    margin: 0 2em;
+    margin: 0 1em;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -193,16 +193,61 @@ table {
  * FORMS
  */
 .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  width: 300px;
 
-  div {
-    margin: 1em 0;
+  .field,
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 1em;
   }
+}
 
-  .radio {
-    label {
-      display: inline-block;
-    }
-  }
+label {
+
+}
+
+input:not([type="checkbox"]) {
+  margin-left: 1em;
+  padding: 1em;
+
+  background: transparent;
+  outline: none;
+  border: 1px solid $purple;
+
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+input[type="checkbox"] {
+  margin-right: 1em;
+}
+
+textarea {
+   background: transparent;
+   outline: none;
+
+   border: 1px solid  $purple;
+
+   transition: all 0.3s ease-in-out;
+   -webkit-transition: all 0.3s ease-in-out;
+   -moz-transition: all 0.3s ease-in-out;
+   -ms-transition: all 0.3s ease-in-out;
+ }
+
+input[type="submit"] {
+  box-sizing: content-box;
+  outline: none;
+  cursor: pointer;
+
+  border: 1px solid $purple;
 }
 
 
