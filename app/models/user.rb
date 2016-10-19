@@ -15,4 +15,7 @@ class User < ApplicationRecord
   # Phantom
   has_one :phantom
 
+  # Posts
+  has_many :posts
+
 end

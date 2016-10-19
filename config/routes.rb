@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: "songs#index"
+  root to: "posts#index"
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
@@ -23,5 +23,7 @@ Rails.application.routes.draw do
       delete 'remove_arrangement'
     end
   end
+
+  resources :posts
 
 end

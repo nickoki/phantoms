@@ -29,7 +29,7 @@ class PhantomsController < ApplicationController
   def create
     @phantom = Phantom.create!(phantom_params.merge(user: current_user))
     redirect_to phantom_path(@phantom)
-    
+
     respond_to do |format|
       if @phantom.save
         format.html { redirect_to @phantom, notice: 'Phantom was successfully created.' }
@@ -73,7 +73,6 @@ class PhantomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def phantom_params
-      params.fetch(:phantom, {})
       params.require(:phantom).permit(:first_name, :last_name, :voice_part, :image_url, :bio, :start_date, :end_date, :is_active)
     end
 end
