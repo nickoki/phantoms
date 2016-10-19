@@ -19,6 +19,10 @@ body {
   .hg-body {
     box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.4);
     padding-bottom: 4em;
+
+    img {
+      border-radius: 2px;
+    }
   }
 
   .hg-content {
@@ -228,6 +232,7 @@ table {
 }
 
 .inactive {
+  
   img {
     opacity: 0.8;
     filter: grayscale(1);

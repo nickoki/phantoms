@@ -9,4 +9,6 @@
 
 <%= render 'form', phantom: @phantom %>
 
-<%= link_to 'Back', phantoms_path %>
+<% content_for :nav do %>
+  <%= link_to 'Back', phantoms_path %>
+<% end %>

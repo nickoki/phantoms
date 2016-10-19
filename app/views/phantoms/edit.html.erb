@@ -5,9 +5,10 @@
   </div>
 <% end %>
 
-<h1>Editing Phantom</h1>
+<h1>Editing Phantom Profile</h1>
 
 <%= render 'form', phantom: @phantom %>
 
-<%= link_to 'Show', @phantom %> |
-<%= link_to 'Back', phantoms_path %>
+<% content_for :nav do %>
+  <%= link_to 'Back', @phantom %>
+<% end %>
