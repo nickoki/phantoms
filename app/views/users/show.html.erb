@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+<% content_for :backdrop do %>
+  <div class="backdrop img-phantoms">
+    <div class="overlay">
+    </div>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
