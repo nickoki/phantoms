@@ -254,69 +254,6 @@ table {
 /**
  * FORMS
  */
-// .form {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   border: 1px solid #ddd;
-//   width: 100%;
-//
-//   .field,
-//   .actions {
-//     display: flex;
-//     justify-content: flex-end;
-//     align-items: center;
-//     margin: 1em;
-//     width: 100% !important;
-//   }
-// }
-//
-// label {
-//
-// }
-//
-// input:not([type="checkbox"]),
-// textarea {
-//   display: inline-block;
-//   margin-left: 1em;
-//   padding: 1em;
-//
-//   background: transparent;
-//   outline: none;
-//   border: 1px solid $light-purple;
-//
-//   transition: all 0.3s ease-in-out;
-//   -webkit-transition: all 0.3s ease-in-out;
-//   -moz-transition: all 0.3s ease-in-out;
-//   -ms-transition: all 0.3s ease-in-out;
-// }
-//
-// input[type="checkbox"] {
-//   margin-right: 1em;
-// }
-//
-// textarea {
-//   background: transparent;
-//   outline: none;
-//
-//   border: 1px solid  $light-purple;
-//
-//   transition: all 0.3s ease-in-out;
-//   -webkit-transition: all 0.3s ease-in-out;
-//   -moz-transition: all 0.3s ease-in-out;
-//   -ms-transition: all 0.3s ease-in-out;
-// }
-//
-// input[type="submit"] {
-//   box-sizing: content-box;
-//   outline: none;
-//   cursor: pointer;
-//
-//   border: 1px solid $light-purple;
-//   color: $light-purple;
-// }
-
-
 .form {
   box-sizing: border-box;
   margin: 10px auto;
