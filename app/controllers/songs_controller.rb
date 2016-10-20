@@ -5,7 +5,7 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
   def index
-    @songs = Song.all
+    @songs = Song.all.order('title ASC')
   end
 
   # GET /songs/1
@@ -106,18 +106,19 @@ class SongsController < ApplicationController
   def update_solo
     @song = Song.find params[:id]
     @solo = @song.solos.where(user: current_user)[0]
-    respond_to do |format|
-      if @song.solos.update(user: current_user)
-        format.html { redirect_to @song, notice: 'Solo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @song }
-      else
-        format.html { render :edit }
-        format.json { render json: @song.errors, status: :unprocessable_entity }
-      end
-    end
+
+    # respond_to do |format|
+    #   if @song.solos.update(user: current_user)
+    #     format.html { redirect_to @song, notice: 'Solo was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @song }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @song.errors, status: :unprocessable_entity }
+    #   end
+    # end
     @solo.update(is_active: params[:solo][:is_active])
 
-    # redirect_to song_path(@song)
+    redirect_to song_path(@song)
   end
 
   def remove_solo

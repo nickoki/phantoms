@@ -7,37 +7,49 @@
 
 <div class="songs-show container">
   <div class="info">
-    <h1><%= @song.title %></h1>
-    <h3><%= @song.artist %></h3>
-    <h3><%= @song.debut_date.strftime("%b %Y") %></h3>
-    <h4>
-      <% if @song.is_active %>
-        Active
-      <% else %>
-        Retired
-      <% end %>
-    </h4>
+    <div class="col-1">
+      <h1><%= @song.title %></h1>
+    </div>
+    <div class="col-1">
+      <div class="row">
+        <h3>Artist: </h3>
+        <h3><%= @song.artist %></h3>
+      </div>
+      <div class="row">
+        <h3>Debut Date: </h3>
+        <h3><%= @song.debut_date.strftime("%b %Y") %></h3>
+      </div>
+      <div class="row">
+        <h3>Status:</h3>
+          <% if @song.is_active %>
+            <h3 class="status active">Active Repertoire</h3>
+          <% else %>
+            <h3 class="status retired">Retired</h3>
+          <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="sub">
     <div class="solos">
       <h1>Soloists</h1>
-      <div class="columns">
+      <div class="column">
         <% @song.solos.each do |solo| %>
           <% if solo.is_active %>
-            <div class="active">
+            <span class="active">
           <% else %>
-            <div class="inactive">
+            <span class="inactive">
           <% end %>
-              <a><%= image_tag Phantom.where(user_id: solo.user.id)[0].image_url, width: '200px' %></a>
-            </div>
+              <a><%= image_tag Phantom.where(user: solo.user)[0].image_url, width: '200px' %></a>
+              <h3><%= Phantom.where(user: solo.user)[0].first_name %></h3>
+            </span>
         <% end %>
       </div>
     </div>
 
     <div class="arrangements">
       <h1>Arranged By</h1>
-      <div class="columns">
+      <div class="column">
         <% @song.arrangements.each do |arrangement| %>
             <div>
               <a><%= image_tag Phantom.where(user_id: arrangement.user.id)[0].image_url, width: '200px' %></a>
@@ -55,7 +67,7 @@
 <% content_for :aside do %>
   <% if current_user %>
     <%= link_to 'Edit Song Info', edit_song_path(@song) %>
-    <%= link_to 'Delete Song', edit_song_path(@song) %>
+    <%= link_to 'Delete Song', song_path(@song), method: :delete, :data => {:confirm => "Are you sure?"} %>
     <% if !@user_has_solo %>
       <span><em>Did you solo <%= @song.title %>?</em></span>
       <%= link_to 'Add Solo', add_solo_song_path(@song), method: :post %>
@@ -67,7 +79,7 @@
     <% if !@user_has_arrangement %>
       <span><em>Did you arrange <%= @song.title %>?</em></span>
       <%= link_to 'Add Arrangement', add_arrangement_song_path(@song), method: :post %>
-    <% elsif @user_has_solo%>
+    <% elsif @user_has_arrangement%>
       <%= link_to "Remove Arrangement", remove_arrangement_song_path(@song), method: :delete %>
     <% end %>
   <% end %>

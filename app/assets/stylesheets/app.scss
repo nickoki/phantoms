@@ -23,13 +23,8 @@ body {
     .hg-content {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       padding-top: 20px;
       text-align: center;
-    }
-
-    img {
-      border-radius: 2px;
     }
   }
 }
@@ -107,9 +102,46 @@ header {
   background-size: cover !important;
 
   .overlay {
+    display: flex;
+    justify-content: center;
     height: inherit;
     background: linear-gradient(to top, hsla(283.2,44%,52.4%, 0.4), hsla(261,43.5%,45.1%, 0.7));
+
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      min-width: 60%;
+      color: #fff;
+
+      h1 {
+        margin: 22px 0;
+        font-size: 4em;
+      }
+
+      h2 {
+        margin: 22px 0;
+        font-size: 2em;
+        font-weight: 300;
+      }
+
+      a {
+        margin: 22px 0;
+        border: 1px solid #fff;
+        border-radius: 2px;
+        padding: 1.6em 2.4em;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+    }
   }
+}
+
+.backdrop.big {
+  height: 620px !important;
 }
 
 
@@ -268,6 +300,10 @@ textarea {
   background: none;
   font-size: 1em;
   color: $light-purple;
+}
+
+textarea {
+  resize: vertical;
 }
 
 select {

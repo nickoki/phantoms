@@ -2,13 +2,50 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.sub {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.songs-show {
 
-  .columns {
+  .info {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
+    .col-1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .row {
+        display: flex;
+
+        h3 {
+          margin: 0.4em 0;
+        }
+        h3:first-child {
+          margin-right: 0.8em;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+
+  .sub {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2em;
+
+    .column {
+      display: flex;
+      justify-content: center;
+
+      span {
+        margin: 1em;
+
+        a {
+        }
+      }
+    }
   }
 }

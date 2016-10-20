@@ -4,7 +4,7 @@ class PhantomsController < ApplicationController
   # GET /phantoms
   # GET /phantoms.json
   def index
-    @phantoms = Phantom.all
+    @phantoms = Phantom.all.order('join_date DESC')
   end
 
   # GET /phantoms/1
