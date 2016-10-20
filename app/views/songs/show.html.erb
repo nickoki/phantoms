@@ -32,28 +32,48 @@
 
   <div class="sub">
     <div class="solos">
-      <h1>Soloists</h1>
+      <% if @song.solos.where(is_active: true).length > 1 %>
+        <h1>Current Soloists</h1>
+      <% elsif @song.solos.where(is_active: true).length == 1 %>
+        <h1>Current Soloist</h1>
+      <% end %>
       <div class="column">
         <% @song.solos.each do |solo| %>
           <% if solo.is_active %>
             <span class="active">
-          <% else %>
-            <span class="inactive">
-          <% end %>
               <a><%= image_tag Phantom.where(user: solo.user)[0].image_url, width: '200px' %></a>
-              <h3><%= Phantom.where(user: solo.user)[0].first_name %></h3>
+              <h3><%= link_to Phantom.where(user: solo.user)[0].first_name, phantom_path(Phantom.where(user: solo.user)[0]) %></h3>
             </span>
+          <% end %>
+        <% end %>
+      </div>
+      <% if @song.solos.where(is_active: false).length > 1 %>
+        <h1>Past Soloists</h1>
+      <% elsif @song.solos.where(is_active: false).length == 1 %>
+        <h1>Past Soloist</h1>
+      <% end %>
+      <div class="column">
+        <% @song.solos.each do |solo| %>
+          <% if !solo.is_active %>
+            <span class="inactive">
+              <a><%= image_tag Phantom.where(user: solo.user)[0].image_url, width: '200px' %></a>
+              <h3><%= link_to Phantom.where(user: solo.user)[0].first_name, phantom_path(Phantom.where(user: solo.user)[0]) %></h3>
+            </span>
+          <% end %>
         <% end %>
       </div>
     </div>
 
     <div class="arrangements">
-      <h1>Arranged By</h1>
+      <% if @song.arrangements.all.length > 0 %>
+        <h1>Arranged By</h1>
+      <% end %>
       <div class="column">
         <% @song.arrangements.each do |arrangement| %>
-            <div>
+            <span>
               <a><%= image_tag Phantom.where(user_id: arrangement.user.id)[0].image_url, width: '200px' %></a>
-            </div>
+              <h3><%= link_to Phantom.where(user: arrangement.user)[0].first_name, phantom_path(Phantom.where(user: arrangement.user)[0]) %></h3>
+            </span>
         <% end %>
       </div>
     </div>

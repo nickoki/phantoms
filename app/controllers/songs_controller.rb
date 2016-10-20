@@ -84,14 +84,7 @@ class SongsController < ApplicationController
   def add_solo
     @solo = Solo.new
     @song = Song.find params[:id]
-    if @song.solos.length > 0
-      @song.solos.each do |solo|
-        if solo.user.id == current_user.id
-          break
-        end
-        @song.solos.create!(user: current_user, is_active: false)
-      end
-    else
+    if @song.solos.where(user: current_user).length == 0
       @song.solos.create!(user: current_user, is_active: false)
     end
 
