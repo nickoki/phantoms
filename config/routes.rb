@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root to: "posts#index"
-
   devise_for :users, controllers: { registrations: 'registrations' }
-
   resources :phantoms
+  # NHO: at this point it might be easier to do nested resources for solos + arrangements,
+  #  with seperate controllers for each, but no views. Could provide more flexibility as you
+  # build out rather than adding to one big controller
 
   resources :songs do
     # add routes to add and remove solo
@@ -23,7 +22,5 @@ Rails.application.routes.draw do
       delete 'remove_arrangement'
     end
   end
-
   resources :posts
-
 end

@@ -12,6 +12,10 @@ class SongsController < ApplicationController
   # GET /songs/1.json
   def show
     @song = Song.find params[:id]
+
+    #  NHO: this logic seems like a smell, plus it is repeated for arrangements
+    # is there any way to abstract this to a model method on a Song or User?
+
     @user_has_solo = false
     @song.solos.each do |solo|
       if solo.user == current_user
@@ -100,6 +104,8 @@ class SongsController < ApplicationController
     @song = Song.find params[:id]
     @solo = @song.solos.where(user: current_user)[0]
 
+    # NHO: reminder to remove unused / commented out code!
+
     # respond_to do |format|
     #   if @song.solos.update(user: current_user)
     #     format.html { redirect_to @song, notice: 'Solo was successfully updated.' }
@@ -127,6 +133,8 @@ class SongsController < ApplicationController
   def add_arrangement
     @arrangement = Arrangement.new
     @song = Song.find params[:id]
+
+    # NHO: definetly should encapsulate this logic as a model method on a Song or User!
     if @song.arrangements.length > 0
       @song.arrangements.each do |solo|
         if solo.user.id == current_user.id

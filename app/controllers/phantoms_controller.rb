@@ -1,5 +1,8 @@
 class PhantomsController < ApplicationController
   before_action :set_phantom, only: [:show, :edit, :update, :destroy]
+  # NHO: Reminder to remove any unused code from scaffolds!
+  # Especially the JSON format blocks if you do not plan / are not currently supporting it.
+  # All of these routes are publicly accessible!
 
   # GET /phantoms
   # GET /phantoms.json
@@ -30,6 +33,7 @@ class PhantomsController < ApplicationController
     @phantom = Phantom.create!(phantom_params.merge(user: current_user))
     redirect_to phantom_path(@phantom)
 
+    # NHO: reminder to remove all unused / commented out code
     # respond_to do |format|
     #   if @phantom.save
     #     format.html { redirect_to @phantom, notice: 'Phantom was successfully created.' }
