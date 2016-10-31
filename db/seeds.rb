@@ -10,10 +10,16 @@ require_relative './user_data.rb'
 require_relative './phantom_data.rb'
 require_relative './song_data.rb'
 
-User.destroy_all
-Phantom.destroy_all
-Song.destroy_all
+# NHO: adding a few missing table wipes, good habbit to destroy child records before parents
+Post.destroy_all
 Solo.destroy_all
+Arrangement.destroy_all
+Song.destroy_all
+Phantom.destroy_all
+User.destroy_all
+
+
+# NHO: great seeds!
 
 user_data = get_user_data()
 phantom_data = get_phantom_data()

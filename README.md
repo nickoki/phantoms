@@ -30,3 +30,5 @@ Submit issues for bugs or features you'd like to see implemented.
 
 - [ ] Refactor CSS
 - [ ] Logo
+
+<!-- NHO: if this is a project you plan on maintaining, I highly recommend posting a free license! Github has most of the more common ones available to add-->

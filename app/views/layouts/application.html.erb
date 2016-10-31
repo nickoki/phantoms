@@ -15,9 +15,14 @@
       <span id="notice"><%= notice %></span>
       <span>
         <% if current_user %>
+          <!-- NHO: can simplify this with AR helper methods!  -->
+          <!-- <% if current_user.phantom %> -->
           <% if Phantom.where(user_id: current_user.id)[0] == nil %>
             <%= link_to "Create Profile", new_phantom_path %>
           <% else %>
+            <!-- NHO: might be a good idea to make simple getters on a user model
+            to serve as proxys to a phantom's attributes, i.e. calling user.name -
+             actually gets user.phantom.first_name  -->
             <span>Hi, <%= Phantom.where(user_id: current_user.id)[0].first_name %></span>
             <%= link_to "Profile Settings", edit_phantom_path(Phantom.where(user_id: current_user.id)[0]) %>
           <% end %>
@@ -41,6 +46,7 @@
       </div>
     </header>
 
+    <!-- NHO: nice job utilizing multiple yields!  -->
     <%= yield :backdrop %>
 
     <div class="hg-body">
